@@ -1,7 +1,19 @@
-Django>=4.2,<5.0
-pillow>=9.0.0         # For handling profile photo image uploads
-django-csp>=3.7       # For setting Content Security Policy headers
-gunicorn>=20.1.0      # Recommended WSGI HTTP server for production
-psycopg2-binary>=2.9  # PostgreSQL support, if using PostgreSQL
-whitenoise>=6.0.0     # For serving static files in production
-django-environ>=0.10  # For managing environment variables securely
+asgiref==3.9.1
+certifi==2025.8.3
+charset-normalizer==3.4.3
+Django==5.2.5
+djangorestframework==3.16.1
+drf-yasg==1.21.10
+idna==3.10
+inflection==0.5.1
+packaging==25.0
+psycopg2-binary==2.9.10
+python-decouple==3.8
+python-dotenv==1.1.1
+pytz==2025.2
+PyYAML==6.0.2
+requests==2.32.4
+sqlparse==0.5.3
+tzdata==2025.2
+uritemplate==4.2.0
+urllib3==2.5.0
