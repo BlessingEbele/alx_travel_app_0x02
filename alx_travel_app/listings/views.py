@@ -4,10 +4,20 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Listing, Booking
 from .serializers import ListingSerializer, BookingSerializer
+from .tasks import send_booking_confirmation_email
 
 class ListingViewSet(viewsets.ModelViewSet):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
+
+    def perform_create(self, serializer):
+        booking = serializer.save()
+
+        # trigger background email task
+        send_booking_confirmation_email.delay(
+            booking.user.email,  # assuming booking has a related user with email
+            f"Booking ID: {booking.id}, Date: {booking.date}, Destination: {booking.destination}"
+        )
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
